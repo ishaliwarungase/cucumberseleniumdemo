@@ -4,6 +4,10 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.JavascriptExecutor;
 
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
@@ -11,23 +15,35 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class StepDefs {
-WebDriver driver;
-@Before public void setUp(){ 
-System.setProperty("webdriver.chrome.driver", "/chromedriver.exe");
-driver = new ChromeDriver();
-driver.manage().window().maximize();
-driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS); 
-} 
+public class StepDefs 
+{
+    WebDriver driver;
+    @Before public void setUp()
+    { 
+        
+        System.setProperty("webdriver.chrome.driver", "/var/lib/jenkins/workspace/CucumberSeleniumDemo/src/test/java/com/cucumberseleniumdemo/chromedriver");
+        ChromeOptions options = new ChromeOptions().setHeadless(true);
+        driver = new ChromeDriver(options);
+    } 
 
-@Given("User enters url")
+@Given("User enters URL")
 public void user_enters_url() 
 {
     driver.get("http://aws-demo.shopizer.com/shop/");
 
-    driver.findElement(By.xpath("//*[@id='customerAccount']/a/span/text()")).click();
+    driver.manage().timeouts().implicitlyWait(10000, TimeUnit.MILLISECONDS);
 
-    driver.findElement(By.xpath("/html/body/nav[1]/div/ul[2]/li[2]/ul/li[2]/a")).click();
+    Actions actions = new Actions(driver);
+       
+    WebElement menuOption = driver.findElement(By.linkText("My Account"));
+     
+    actions.moveToElement(menuOption).perform();
+
+    WebElement subMenu = driver.findElement(By.xpath("/html/body/nav[1]/div/ul[2]/li[2]/ul/li[2]/a"));
+
+    JavascriptExecutor executor = (JavascriptExecutor)driver;
+
+    executor.executeScript("arguments[0].click();", subMenu);
 }
 
 @And("He enters userName")
@@ -47,5 +63,6 @@ public void home_page_is_displayed()
 {
     System.out.println("home page");
     driver.findElement(By.id("genericLogin-button")).click();
+    driver.close();
 }
 }
