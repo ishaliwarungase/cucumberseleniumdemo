@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.JavascriptExecutor;
-import org.testng.Assert;
+
 
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
@@ -18,14 +18,14 @@ import cucumber.api.java.en.When;
 
 public class StepDefs 
 {
-        WebDriver driver;
-        @Before public void setUp()
-        { 
+    WebDriver driver;
+    @Before public void setUp()
+    { 
 
-            System.setProperty("webdriver.chrome.driver", "/var/lib/jenkins/jobs/CucumberTest/workspace/src/test/java/com/cucumberseleniumdemo/chromedriver");
-            ChromeOptions options = new ChromeOptions().setHeadless(true);
-            driver = new ChromeDriver(options);
-        } 
+        System.setProperty("webdriver.chrome.driver", "/var/lib/jenkins/jobs/CucumberTest/workspace/src/test/java/com/cucumberseleniumdemo/chromedriver");
+        ChromeOptions options = new ChromeOptions().setHeadless(true);
+        driver = new ChromeDriver(options);
+    } 
 
     @Given("User enters URL")
     public void user_enters_url() 
@@ -47,37 +47,20 @@ public class StepDefs
         executor.executeScript("arguments[0].click();", subMenu);
     }
 
-    @And("He enters userName")
-    public void he_enters_userName() 
+    @When ("^user logged in using username as \"(.*)\" and password as \"(.*)\"$")
+    public void login(String username,String password)
     {
-        driver.findElement(By.id("signin_userName")).sendKeys("abc6@gmail.com");
-    }
+       driver.findElement(By.id("signin_userName")).sendKeys(username);
 
-    @When("He enters password")
-    public void he_enters_password() 
+       driver.findElement(By.id("signin_password")).sendKeys(password);
+    }
+    
+    @Then("Home page should be displayed")
+    public void verifySuccessful()
     {
-        driver.findElement(By.id("signin_password")).sendKeys("P@33w0rd");
+      String expectedText=" ";
+      String actualText=driver.findElement(By.xpath("//*[@id='loginError']")).getText();
+      Assert.assertTrue("Login successful",expectedText.equals(actualText));
     }
-
-    @Then("Home page is displayed")
-    public void home_page_is_displayed() 
-    {
-        driver.findElement(By.id("genericLogin-button")).click();
-            
-        String errmsg = "Login Failed. Username or Password is incorrect.";
-
-        String msg = driver.findElement(By.xpath("//*[@id='loginError']")).getText();
-        
-        Assert.assertEquals(errmsg, msg);
-            
-//         if(errmsg.equalsIgnoreCase(msg))
-//         {
-//             System.out.println("Login Failed. Username or Password is incorrect");
-//         }
-//         else
-//         {
-//             System.out.println("Home page is displayed");
-//         }
-        driver.close();
-    }
+}
 }
