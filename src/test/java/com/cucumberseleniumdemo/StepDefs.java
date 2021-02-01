@@ -72,11 +72,11 @@ public class StepDefs
 
         if(msg == errmsg)
         {
-            System.out.println('Login Failed. Username or Password is incorrect');
+            System.out.println("Login Failed. Username or Password is incorrect");
         }
         else
         {
-            System.out.println('Home page is displayed');
+            System.out.println("Home page is displayed");
         }
         driver.close();
     }
