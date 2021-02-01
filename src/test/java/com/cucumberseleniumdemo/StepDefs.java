@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.JavascriptExecutor;
-// import static org.junit.Assert.*;
+import org.testng.Assert;
 
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
@@ -67,9 +67,9 @@ public class StepDefs
         String errmsg = "Login Failed. Username or Password is incorrect.";
 
         String msg = driver.findElement(By.xpath("//*[@id='loginError']")).getText();
-
-//         assertEquals(errmsg,msg);
-
+        
+        Assert.assertEquals(errmsg, msg);
+            
         if(errmsg.equalsIgnoreCase(msg))
         {
             System.out.println("Login Failed. Username or Password is incorrect");
