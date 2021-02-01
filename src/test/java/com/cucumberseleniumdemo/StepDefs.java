@@ -67,6 +67,8 @@ public class StepDefs
         String errmsg = "Login Failed. Username or Password is incorrect.";
 
         String msg = driver.findElement(By.xpath("//*[@id='loginError']")).getText();
+         
+        System.out.println("Message is: " +msg); 
         
         Assert.assertEquals(errmsg, msg);
             
