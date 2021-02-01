@@ -18,14 +18,14 @@ import cucumber.api.java.en.When;
 
 public class StepDefs 
 {
-    WebDriver driver;
-    @Before public void setUp()
-    { 
+        WebDriver driver;
+        @Before public void setUp()
+        { 
 
-        System.setProperty("webdriver.chrome.driver", "/var/lib/jenkins/jobs/CucumberTest/workspace/src/test/java/com/cucumberseleniumdemo/chromedriver");
-        ChromeOptions options = new ChromeOptions().setHeadless(true);
-        driver = new ChromeDriver(options);
-    } 
+            System.setProperty("webdriver.chrome.driver", "/var/lib/jenkins/jobs/CucumberTest/workspace/src/test/java/com/cucumberseleniumdemo/chromedriver");
+            ChromeOptions options = new ChromeOptions().setHeadless(true);
+            driver = new ChromeDriver(options);
+        } 
 
     @Given("User enters URL")
     public void user_enters_url() 
@@ -47,20 +47,41 @@ public class StepDefs
         executor.executeScript("arguments[0].click();", subMenu);
     }
 
-    @When ("^User logged in using username as \"(.*)\" and password as \"(.*)\"$")
-    public void login(String username,String password)
+    @And("He enters userName")
+    public void he_enters_userName() 
     {
-       driver.findElement(By.id("signin_userName")).sendKeys(username);
-
-       driver.findElement(By.id("signin_password")).sendKeys(password);
+        driver.findElement(By.id("signin_userName")).sendKeys("abc@gmail.com");
     }
-    
-    @Then("Home page should be displayed")
-    public void verifySuccessful()
+
+    @When("He enters password")
+    public void he_enters_password() 
     {
-      String expectedText="Importa";
-      String actualText=driver.findElement(By.xpath("//*[@id='loginError']")).getText();
-      Assert.assertTrue("Login successful",expectedText.equals(actualText));
+        driver.findElement(By.id("signin_password")).sendKeys("P@33w0rd");
+    }
+
+    @Then("Home page is displayed")
+    public void home_page_is_displayed() 
+    {
+        driver.findElement(By.id("genericLogin-button")).click();
+    
+        String errmsg = "Importa";
+        
+        // Login Failed. Username or Password is incorrect.;
+
+        String msg = driver.getTitle();
+        
+        // findElement(By.xpath("//*[@id='loginError']")).getText();
+
+        Assert.assertEquals(errmsg,msg);
+
+        if(errmsg.equalsIgnoreCase(msg))
+        {
+            System.out.println("Login Failed. Username or Password is incorrect");
+        }
+        else
+        {
+            System.out.println("Home page is displayed");
+        }
+        driver.close();
     }
 }
-
