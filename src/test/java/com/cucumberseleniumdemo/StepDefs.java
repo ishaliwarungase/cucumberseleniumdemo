@@ -61,7 +61,7 @@ public void he_enters_password()
 @Then("Home page is displayed")
 public void home_page_is_displayed() 
 {
-    System.out.println("home page");
+    System.out.println("Home Page is Displayed");
     driver.findElement(By.id("genericLogin-button")).click();
     driver.close();
 }
