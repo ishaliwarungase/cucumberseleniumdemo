@@ -49,7 +49,7 @@ public void user_enters_url()
 @And("He enters userName")
 public void he_enters_userName() 
 {
-    driver.findElement(By.id("signin_userName")).sendKeys("abc6@gmail.com");
+    driver.findElement(By.id("signin_userName")).sendKeys("abc@gmail.com");
 }
 
 @When("He enters password")
