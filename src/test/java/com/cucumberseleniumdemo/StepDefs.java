@@ -69,20 +69,18 @@ public class StepDefs
         // Login Failed. Username or Password is incorrect.;
 
         String msg = driver.getTitle();
-            
-        System.out.println(msg);
-        
+           
         // findElement(By.xpath("//*[@id='loginError']")).getText();
 
         Assert.assertEquals(errmsg,msg);
 
         if(errmsg.equalsIgnoreCase(msg))
         {
-            System.out.println("Login Failed. Username or Password is incorrect");
+            System.out.println("Home page is displayed");
         }
         else
         {
-            System.out.println("Home page is displayed");
+            System.out.println("Login Failed. Username or Password is incorrect");
         }
         driver.close();
     }
