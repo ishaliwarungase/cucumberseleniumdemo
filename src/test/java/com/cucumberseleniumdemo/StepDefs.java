@@ -58,7 +58,7 @@ public class StepDefs
     @Then("Home page should be displayed")
     public void verifySuccessful()
     {
-      String expectedText=" ";
+      String expectedText="Importa";
       String actualText=driver.findElement(By.xpath("//*[@id='loginError']")).getText();
       Assert.assertTrue("Login successful",expectedText.equals(actualText));
     }
