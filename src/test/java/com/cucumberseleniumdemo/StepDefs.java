@@ -69,6 +69,8 @@ public class StepDefs
         // Login Failed. Username or Password is incorrect.;
 
         String msg = driver.getTitle();
+            
+        System.out.println(msg);
         
         // findElement(By.xpath("//*[@id='loginError']")).getText();
 
