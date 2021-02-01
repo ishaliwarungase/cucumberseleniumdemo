@@ -70,14 +70,14 @@ public class StepDefs
         
         Assert.assertEquals(errmsg, msg);
             
-        if(errmsg.equalsIgnoreCase(msg))
-        {
-            System.out.println("Login Failed. Username or Password is incorrect");
-        }
-        else
-        {
-            System.out.println("Home page is displayed");
-        }
+//         if(errmsg.equalsIgnoreCase(msg))
+//         {
+//             System.out.println("Login Failed. Username or Password is incorrect");
+//         }
+//         else
+//         {
+//             System.out.println("Home page is displayed");
+//         }
         driver.close();
     }
 }
