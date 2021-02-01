@@ -30,7 +30,7 @@ public class StepDefs
     @Given("User enters URL")
     public void user_enters_url() 
     {
-        driver.get("http://aws-demo.shopizer.com/shop/");
+        driver.get("http://192.168.30.125:30011/shop/");
 
         driver.manage().timeouts().implicitlyWait(10000, TimeUnit.MILLISECONDS);
 
@@ -50,7 +50,7 @@ public class StepDefs
     @And("He enters userName")
     public void he_enters_userName() 
     {
-        driver.findElement(By.id("signin_userName")).sendKeys("abc@gmail.com");
+        driver.findElement(By.id("signin_userName")).sendKeys("rakesh.yadav@gmail.com");
     }
 
     @When("He enters password")
