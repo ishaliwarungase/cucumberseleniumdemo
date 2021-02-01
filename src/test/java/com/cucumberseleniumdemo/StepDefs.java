@@ -50,7 +50,7 @@ public class StepDefs
     @And("He enters userName")
     public void he_enters_userName() 
     {
-        driver.findElement(By.id("signin_userName")).sendKeys("abc@gmail.com");
+        driver.findElement(By.id("signin_userName")).sendKeys("abc6@gmail.com");
     }
 
     @When("He enters password")
@@ -67,8 +67,6 @@ public class StepDefs
         String errmsg = "Login Failed. Username or Password is incorrect.";
 
         String msg = driver.findElement(By.xpath("//*[@id='loginError']")).getText();
-         
-        System.out.println("Message is: " +msg); 
         
         Assert.assertEquals(errmsg, msg);
             
