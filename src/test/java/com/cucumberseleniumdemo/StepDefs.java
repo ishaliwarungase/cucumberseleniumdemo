@@ -47,7 +47,7 @@ public class StepDefs
         executor.executeScript("arguments[0].click();", subMenu);
     }
 
-    @When ("^user logged in using username as \"(.*)\" and password as \"(.*)\"$")
+    @When ("^User logged in using username as \"(.*)\" and password as \"(.*)\"$")
     public void login(String username,String password)
     {
        driver.findElement(By.id("signin_userName")).sendKeys(username);
