@@ -63,14 +63,14 @@ public class StepDefs
     public void home_page_is_displayed() 
     {
         driver.findElement(By.id("genericLogin-button")).click();
-
-        String msg = driver.findElement(By.xpath('//*[@id="loginError"]')).getText();
-
+            
         String errmsg = "Login Failed. Username or Password is incorrect.";
 
-        assertEquals(msg,errmsg);
+        String msg = driver.findElement(By.xpath("//*[@id='loginError']")).getText();
 
-        if(msg == errmsg)
+        assertEquals(errmsg,msg);
+
+        if(errmsg.equalsIgnoreCase(msg))
         {
             System.out.println("Login Failed. Username or Password is incorrect");
         }
