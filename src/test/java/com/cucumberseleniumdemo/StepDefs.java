@@ -21,7 +21,7 @@ public class StepDefs
     @Before public void setUp()
     { 
         
-        System.setProperty("webdriver.chrome.driver", "/var/lib/jenkins/jobs/CucumberTest/workspace/src/test/java/com/cucumberseleniumdemo/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "/var/lib/jenkins/workspace/CucumberSeleniumDemo/src/test/java/com/cucumberseleniumdemo/chromedriver");
         ChromeOptions options = new ChromeOptions().setHeadless(true);
         driver = new ChromeDriver(options);
     } 
@@ -61,8 +61,22 @@ public void he_enters_password()
 @Then("Home page is displayed")
 public void home_page_is_displayed() 
 {
-    System.out.println("Home Page is Displayed");
     driver.findElement(By.id("genericLogin-button")).click();
+
+    String msg = driver.findElement(By.xpath('//*[@id="loginError"]')).getText();
+
+    String errmsg = "Login Failed. Username or Password is incorrect.";
+
+    assertEquals(msg,errmsg);
+
+    if(msg == errmsg)
+    {
+        print('Login Failed. Username or Password is incorrect');
+    }
+    else
+    {
+        print('Home page is displayed');
+    }
     driver.close();
 }
 }
