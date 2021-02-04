@@ -30,7 +30,7 @@ public class StepDefs
     @Given("User enters URL")
     public void user_enters_url() 
     {
-        driver.get("http://192.168.30.125:30011/shop/");
+        driver.get("http://aws-demo.shopizer.com/shop/");
 
         driver.manage().timeouts().implicitlyWait(10000, TimeUnit.MILLISECONDS);
 
@@ -46,25 +46,39 @@ public class StepDefs
 
         executor.executeScript("arguments[0].click();", subMenu);
     }
-
-    @And("He enters userName")
-    public void he_enters_userName() 
+        
+    @When("User logs in using valid credentials")
+    public void user_logs_in_using_valid_credentials() 
     {
-        driver.findElement(By.id("signin_userName")).sendKeys("rakesh.yadav@gmail.com");
-    }
-
-    @When("He enters password")
-    public void he_enters_password() 
-    {
+        driver.findElement(By.id("signin_userName")).sendKeys("abc6@gmail.com");
+    
         driver.findElement(By.id("signin_password")).sendKeys("P@33w0rd");
     }
 
-    @Then("Home page is displayed")
-    public void home_page_is_displayed() 
+    @Then("User should be logged in")
+    public void user_is_logged_in() 
     {
         driver.findElement(By.id("genericLogin-button")).click();
             
         System.out.println("Home page is displayed");
+            
+        driver.close();
+    }
+    
+    @When("User logs in using invalid credentials")
+    public void user_logs_in_using_invalid_credentials() 
+    {
+        driver.findElement(By.id("signin_userName")).sendKeys("rakesh.yadav@gmail.com");
+    
+        driver.findElement(By.id("signin_password")).sendKeys("P@33w0rd");
+    }
+
+    @Then("User should not be logged in")
+    public void user_is_not_logged_in() 
+    {
+        driver.findElement(By.id("genericLogin-button")).click();
+            
+        System.out.println("Home page is not displayed");
             
         driver.close();
     }
