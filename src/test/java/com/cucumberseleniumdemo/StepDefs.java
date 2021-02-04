@@ -89,7 +89,7 @@ public class StepDefs
 
                 driver.close();
            }
-          catch (Exception e) 
+          catch (NoSuchElementException e) 
             {
 //                 return false;
             }
