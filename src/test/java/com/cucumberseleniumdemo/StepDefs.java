@@ -73,12 +73,12 @@ public class StepDefs
         driver.findElement(By.id("signin_password")).sendKeys("P@33w0rd");
     }
     
-    try {
-            @Then("User should not be logged in")
-            public void user_is_not_logged_in() 
-            {
-                driver.findElement(By.id("genericLogin-button")).click();
-
+    
+    @Then("User should not be logged in")
+     public void user_is_not_logged_in() 
+     {
+          driver.findElement(By.id("genericLogin-button")).click();
+          try {
                 String errmsg = "Login Failed. Username or Password is incorrect.";
 
                 String msg = driver.findElement(By.xpath("//*[@id='loginError']")).getText();
@@ -88,10 +88,10 @@ public class StepDefs
                 System.out.println("Home page is not displayed");
 
                 driver.close();
+              }
+          catch (NoSuchElementException e) 
+            {
+                return false;
             }
-    }
-  catch (NoSuchElementException e) 
-   {
-        return false;
     }
 }
