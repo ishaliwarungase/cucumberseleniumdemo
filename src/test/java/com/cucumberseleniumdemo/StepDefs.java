@@ -83,13 +83,13 @@ public class StepDefs
           {
                 String errmsg = "Login Failed. Username or Password is incorrect.";
 
-                String msg = driver.findElements(By.xpath("//*[@id='loginError']")).getText();
+                String msg = driver.findElement(By.xpath("//*[@id='loginError']")).getText();
 
                 Assert.assertFalse(errmsg.equals(msg));
 
                 driver.close();
            }
-          catch (NoSuchElementException e) 
+          catch (Exception e) 
             {
 //                 return false;
             }
