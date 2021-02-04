@@ -69,7 +69,7 @@ public class StepDefs
     @When("User logs in using invalid credentials")
     public void user_logs_in_using_invalid_credentials() 
     {
-        driver.findElement(By.id("signin_userName")).sendKeys("abc6@gmail.com");
+        driver.findElement(By.id("signin_userName")).sendKeys("abc@gmail.com");
     
         driver.findElement(By.id("signin_password")).sendKeys("P@33w0rd");
     }
@@ -90,7 +90,7 @@ public class StepDefs
 
                 driver.close();
               }
-          catch (NoSuchElementException e) 
+          catch (Exception e) 
             {
 //                 return false;
             }
