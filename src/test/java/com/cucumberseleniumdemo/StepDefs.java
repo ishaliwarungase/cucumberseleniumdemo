@@ -82,7 +82,7 @@ public class StepDefs
 
         String msg = driver.findElement(By.xpath("//*[@id='loginError']")).getText();
             
-        Assert.assertFalse(errmsg.equals(msg));
+        Assert.assertTrue(errmsg.equals(msg));
             
         System.out.println("Home page is not displayed");
             
