@@ -92,7 +92,7 @@ public class StepDefs
               }
           catch (NoSuchElementException e) 
             {
-                return false;
+//                 return false;
             }
     }
 }
