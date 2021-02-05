@@ -53,27 +53,27 @@ public class StepDefs
        @When("User enters information for registration")
        public void user_enters_information_for_registration() 
        {
-          driver.findElement(By.xpath("//*[@id='firstName']")).sendKeys("");
+          driver.findElement(By.xpath("/html/body/div[4]/div/div/div[1]/div[2]/form/div[2]/input")).sendKeys("");
 
-          driver.findElement(By.xpath("//*[@id='lastName']")).sendKeys("");
+          driver.findElement(By.xpath("/html/body/div[4]/div/div/div[1]/div[2]/form/div[3]/input")).sendKeys("");
 
           Select country = new Select(driver.findElement(By.xpath("//*[@id='registration_country']")));
           country.selectByVisibleText("India");
 
-          driver.findElement(By.xpath("//*[@id='hidden_zones']")).sendKeys("");
+          driver.findElement(By.xpath("/html/body/div[4]/div/div/div[1]/div[2]/form/div[5]/input")).sendKeys("");
 
-          driver.findElement(By.xpath("//*[@id='emailAddress']")).sendKeys("abc@gmail.com");
+          driver.findElement(By.xpath("/html/body/div[4]/div/div/div[1]/div[2]/form/div[7]/input[1]")).sendKeys("abcd@gmail.com");
 
-          driver.findElement(By.xpath("//*[@id='password']")).sendKeys("P@33w0rd");
+          driver.findElement(By.xpath("/html/body/div[4]/div/div/div[1]/div[2]/form/div[8]/input")).sendKeys("P@33w0rd");
 
-          driver.findElement(By.xpath("//*[@id='passwordAgain']")).sendKeys("P@33w0rd");
+          driver.findElement(By.xpath("/html/body/div[4]/div/div/div[1]/div[2]/form/div[9]/input")).sendKeys("P@33w0rd");
 
         }
 
        @Then("User should register")
        public void user_should_register() 
        {
-           driver.findElement(By.xpath("//*[@id='registrationForm']/button")).click();
+           driver.findElement(By.xpath("/html/body/div[4]/div/div/div[1]/div[2]/form/button")).click();
 
            try 
           {
@@ -134,8 +134,8 @@ public class StepDefs
 
             }
             
-        driver.close();
+        
     }
-      
+      driver.close();
 }
 
