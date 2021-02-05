@@ -6,8 +6,8 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resources/features/",
-        tags = {"@Register","@Login"},
+        features = { "src/test/resources/features/"},
+//         tags = {"@Register","@Login"},
         plugin = {
                 "pretty",
                 "html:results/html",
