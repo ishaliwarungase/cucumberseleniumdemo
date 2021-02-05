@@ -66,7 +66,7 @@ public class StepDefs
 
           driver.findElement(By.xpath("//*[@id='password']")).sendKeys("P@33w0rd");
 
-          driver.findElement(By.xpath("//*[@id='passwordAgain']")).sendKeys("");
+          driver.findElement(By.xpath("//*[@id='passwordAgain']")).sendKeys();
 
         }
 
