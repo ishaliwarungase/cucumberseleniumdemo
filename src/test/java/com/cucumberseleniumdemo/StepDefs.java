@@ -134,8 +134,8 @@ public class StepDefs
 
             }
             
-        
+        driver.close();
     }
-      driver.close();
+      
 }
 
