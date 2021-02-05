@@ -19,22 +19,79 @@ import cucumber.api.java.en.When;
 
 public class StepDefs 
 {
-        WebDriver driver;
-        @Before public void setUp()
-        { 
+    WebDriver driver;
+    @Before public void setUp()
+    { 
+        System.setProperty("webdriver.chrome.driver", "/var/lib/jenkins/jobs/CucumberTest/workspace/src/test/java/com/cucumberseleniumdemo/chromedriver");
+        ChromeOptions options = new ChromeOptions().setHeadless(true);
 
-            System.setProperty("webdriver.chrome.driver", "/var/lib/jenkins/jobs/CucumberTest/workspace/src/test/java/com/cucumberseleniumdemo/chromedriver");
-            ChromeOptions options = new ChromeOptions().setHeadless(true);
-            driver = new ChromeDriver(options);
-        } 
+        driver = new ChromeDriver(options);
 
-    @Given("User enters URL")
-    public void user_enters_url() 
-    {
         driver.get("http://aws-demo.shopizer.com/shop/");
 
         driver.manage().timeouts().implicitlyWait(10000, TimeUnit.MILLISECONDS);
+    } 
 
+    @Given("User opens Registration Page")
+      public void register_user()
+      {
+
+        Actions actions = new Actions(driver);
+
+        WebElement menuOption = driver.findElement(By.linkText("My Account"));
+
+        actions.moveToElement(menuOption).perform();
+
+        WebElement subMenu = driver.findElement(By.xpath("/html/body/nav[1]/div/ul[2]/li[2]/ul/li[1]/a"));
+
+        JavascriptExecutor executor = (JavascriptExecutor)driver;
+
+        executor.executeScript("arguments[0].click();", subMenu);
+      }
+
+       @When("User enters information for registration")
+       public void user_enters_information_for_registration() 
+       {
+          driver.findElement(By.xpath("//*[@id='firstName']")).sendKeys("abc");
+
+          driver.findElement(By.xpath("//*[@id='lastName']")).sendKeys("pqr");
+
+          Select country = Select(driver.findElement(By.xpath("//*[@id='registration_country']")));
+          country.selectByVisibleText("India");
+
+          driver.findElement(By.xpath("//*[@id='hidden_zones']")).sendKeys("Maharashtra");
+
+          driver.findElement(By.xpath("//*[@id='emailAddress']")).sendKeys("abc@gmail.com");
+
+          driver.findElement(By.xpath("//*[@id='password']")).sendKeys("P@33w0rd");
+
+          driver.findElement(By.xpath("//*[@id='passwordAgain']")).sendKeys("P@33w0rd");
+
+        }
+
+       @Then("User should register")
+       public void user_should_register() 
+       {
+           driver.findElement(By.xpath("//*[@id='registrationForm']/button")).click();
+
+           try 
+          {
+                String errmsg = "Unable to complete registration, please try again later";
+
+                String msg = driver.findElement(By.xpath("//*[@id='customer.errors']")).getText();
+
+                Assert.assertFalse(errmsg.equals(msg));
+          }
+          catch (Exception e) 
+           {
+
+           }
+       }
+
+    
+    @Given("User opens Login Page")
+    public void user_enters_url() 
+    {
         Actions actions = new Actions(driver);
 
         WebElement menuOption = driver.findElement(By.linkText("My Account"));
@@ -48,8 +105,8 @@ public class StepDefs
         executor.executeScript("arguments[0].click();", subMenu);
     }
         
-    @When("User logs in using valid credentials")
-    public void user_logs_in_using_valid_credentials() 
+    @When("User enters username and password")
+    public void user_enters_username_and_password() 
     {
         driver.findElement(By.id("signin_userName")).sendKeys("abc6@gmail.com");
     
@@ -57,28 +114,11 @@ public class StepDefs
     }
 
     @Then("User should be logged in")
-    public void user_is_logged_in() 
+    public void user_should_be_logged_in() 
     {
         driver.findElement(By.id("genericLogin-button")).click();
-            
-        System.out.println("Home page is displayed");
-            
-        driver.close();
-    }
-    
-    @When("User logs in using invalid credentials")
-    public void user_logs_in_using_invalid_credentials() 
-    {
-        driver.findElement(By.id("signin_userName")).sendKeys("abc6@gmail.com");
-    
-        driver.findElement(By.id("signin_password")).sendKeys("P@33w0rd");
-    }
-    
-    
-    @Then("User should not be logged in")
-     public void user_is_not_logged_in() 
-     {
-          driver.findElement(By.id("genericLogin-button")).click();
+
+        driver.findElement(By.id("genericLogin-button")).click();
           try 
           {
                 String errmsg = "Login Failed. Username or Password is incorrect.";
@@ -87,11 +127,15 @@ public class StepDefs
 
                 Assert.assertFalse(errmsg.equals(msg));
 
-                driver.close();
+            
            }
           catch (Exception e) 
             {
-//                 return false;
+
             }
+            
+        driver.close();
     }
+      
 }
+
