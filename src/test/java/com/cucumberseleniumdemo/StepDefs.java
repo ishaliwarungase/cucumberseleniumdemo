@@ -53,14 +53,14 @@ public class StepDefs
        @When("User enters information for registration")
        public void user_enters_information_for_registration() 
        {
-          driver.findElement(By.xpath("//*[@id='firstName']")).sendKeys("abc");
+          driver.findElement(By.xpath("//*[@id='firstName']")).sendKeys("");
 
           driver.findElement(By.xpath("//*[@id='lastName']")).sendKeys("pqr");
 
           Select country = new Select(driver.findElement(By.xpath("//*[@id='registration_country']")));
           country.selectByVisibleText("India");
 
-          driver.findElement(By.xpath("//*[@id='hidden_zones']")).sendKeys("");
+          driver.findElement(By.xpath("//*[@id='hidden_zones']")).sendKeys("Maharashtra");
 
           driver.findElement(By.xpath("//*[@id='emailAddress']")).sendKeys("abc@gmail.com");
 
