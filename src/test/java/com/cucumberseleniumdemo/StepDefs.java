@@ -60,9 +60,9 @@ public class StepDefs
           Select country = new Select(driver.findElement(By.xpath("//*[@id='registration_country']")));
           country.selectByVisibleText("India");
            
-          driver.findElement(By.id("hidden_zones")).sendKeys("mumbai");
+          driver.findElement(By.id("hidden_zones")).sendKeys("Maharashtra");
            
-          driver.findElement(By.id("emailAddress")).sendKeys("abcu@gmail.com");
+          driver.findElement(By.id("emailAddress")).sendKeys("abc@gmail.com");
 
           driver.findElement(By.id("password")).sendKeys("P@33w0rd");
 
