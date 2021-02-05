@@ -118,9 +118,8 @@ public class StepDefs
     public void user_should_be_logged_in() 
     {
         driver.findElement(By.id("genericLogin-button")).click();
-
-        driver.findElement(By.id("genericLogin-button")).click();
-          try 
+        
+        try 
           {
                 String errmsg = "Login Failed. Username or Password is incorrect.";
 
