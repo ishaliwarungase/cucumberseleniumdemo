@@ -55,12 +55,12 @@ public class StepDefs
        {
           driver.findElement(By.xpath("//*[@id='firstName']")).sendKeys("");
 
-          driver.findElement(By.xpath("//*[@id='lastName']")).sendKeys("pqr");
+          driver.findElement(By.xpath("//*[@id='lastName']")).sendKeys("");
 
           Select country = new Select(driver.findElement(By.xpath("//*[@id='registration_country']")));
           country.selectByVisibleText("India");
 
-          driver.findElement(By.xpath("//*[@id='hidden_zones']")).sendKeys("Maharashtra");
+          driver.findElement(By.xpath("//*[@id='hidden_zones']")).sendKeys("");
 
           driver.findElement(By.xpath("//*[@id='emailAddress']")).sendKeys("abc@gmail.com");
 
