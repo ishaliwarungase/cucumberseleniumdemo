@@ -60,13 +60,13 @@ public class StepDefs
           Select country = new Select(driver.findElement(By.xpath("//*[@id='registration_country']")));
           country.selectByVisibleText("India");
 
-          driver.findElement(By.xpath("//*[@id='hidden_zones']")).sendKeys("Maharashtra");
+          driver.findElement(By.xpath("//*[@id='hidden_zones']")).sendKeys("");
 
           driver.findElement(By.xpath("//*[@id='emailAddress']")).sendKeys("abc@gmail.com");
 
           driver.findElement(By.xpath("//*[@id='password']")).sendKeys("P@33w0rd");
 
-          driver.findElement(By.xpath("//*[@id='passwordAgain']")).sendKeys();
+          driver.findElement(By.xpath("//*[@id='passwordAgain']")).sendKeys("P@33w0rd");
 
         }
 
