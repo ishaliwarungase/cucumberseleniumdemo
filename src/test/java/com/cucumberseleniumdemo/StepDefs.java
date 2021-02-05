@@ -57,7 +57,7 @@ public class StepDefs
 
           driver.findElement(By.xpath("//*[@id='lastName']")).sendKeys("pqr");
 
-          Select country = Select(driver.findElement(By.xpath("//*[@id='registration_country']")));
+          Select country = new Select(driver.findElement(By.xpath("//*[@id='registration_country']")));
           country.selectByVisibleText("India");
 
           driver.findElement(By.xpath("//*[@id='hidden_zones']")).sendKeys("Maharashtra");
