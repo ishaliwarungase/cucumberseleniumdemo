@@ -66,7 +66,7 @@ public class StepDefs
 
           driver.findElement(By.xpath("//*[@id='password']")).sendKeys("P@33w0rd");
 
-          driver.findElement(By.xpath("//*[@id='passwordAgain']")).sendKeys("P@33w0rd");
+          driver.findElement(By.xpath("//*[@id='passwordAgain']")).sendKeys("");
 
         }
 
@@ -109,7 +109,7 @@ public class StepDefs
     @When("User enters username and password")
     public void user_enters_username_and_password() 
     {
-        driver.findElement(By.id("signin_userName")).sendKeys("abc6@gmail.com");
+        driver.findElement(By.id("signin_userName")).sendKeys("abc@gmail.com");
     
         driver.findElement(By.id("signin_password")).sendKeys("P@33w0rd");
     }
