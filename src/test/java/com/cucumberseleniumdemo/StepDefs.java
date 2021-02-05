@@ -53,20 +53,20 @@ public class StepDefs
        @When("User enters information for registration")
        public void user_enters_information_for_registration() 
        {
-          driver.findElement(By.xpath("/html/body/div[4]/div/div/div[1]/div[2]/form/div[2]/input")).sendKeys("");
+          driver.findElement(By.id("firstName")).sendKeys("");
 
-          driver.findElement(By.xpath("/html/body/div[4]/div/div/div[1]/div[2]/form/div[3]/input")).sendKeys("");
-
+          driver.findElement(By.id("lastName")).sendKeys("");
+                         
           Select country = new Select(driver.findElement(By.xpath("//*[@id='registration_country']")));
           country.selectByVisibleText("India");
+           
+          driver.findElement(By.id("hidden_zones")).sendKeys("");
+           
+          driver.findElement(By.id("emailAddress")).sendKeys("abcd@gmail.com");
 
-          driver.findElement(By.xpath("/html/body/div[4]/div/div/div[1]/div[2]/form/div[5]/input")).sendKeys("");
+          driver.findElement(By.id("password")).sendKeys("P@33w0rd");
 
-          driver.findElement(By.xpath("/html/body/div[4]/div/div/div[1]/div[2]/form/div[7]/input[1]")).sendKeys("abcd@gmail.com");
-
-          driver.findElement(By.xpath("/html/body/div[4]/div/div/div[1]/div[2]/form/div[8]/input")).sendKeys("P@33w0rd");
-
-          driver.findElement(By.xpath("/html/body/div[4]/div/div/div[1]/div[2]/form/div[9]/input")).sendKeys("P@33w0rd");
+          driver.findElement(By.id("passwordAgain")).sendKeys("P@33w0rd");
 
         }
 
