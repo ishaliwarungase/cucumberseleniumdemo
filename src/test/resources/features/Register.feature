@@ -1,4 +1,3 @@
-@Register
 Feature: User tries to register
 
 Scenario: User tries to register
