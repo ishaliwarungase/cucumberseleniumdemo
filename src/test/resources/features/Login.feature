@@ -1,4 +1,3 @@
-@Login
 Feature: User tries to login with valid and invalid credentials
 
 Scenario: User tries to login
