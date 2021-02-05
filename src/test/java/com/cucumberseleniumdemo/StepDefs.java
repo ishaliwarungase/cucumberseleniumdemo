@@ -53,16 +53,16 @@ public class StepDefs
        @When("User enters information for registration")
        public void user_enters_information_for_registration() 
        {
-          driver.findElement(By.id("firstName")).sendKeys("");
+          driver.findElement(By.id("firstName")).sendKeys("abc");
 
-          driver.findElement(By.id("lastName")).sendKeys("");
+          driver.findElement(By.id("lastName")).sendKeys("abc");
                          
           Select country = new Select(driver.findElement(By.xpath("//*[@id='registration_country']")));
           country.selectByVisibleText("India");
            
-          driver.findElement(By.id("hidden_zones")).sendKeys("");
+          driver.findElement(By.id("hidden_zones")).sendKeys("mumbai");
            
-          driver.findElement(By.id("emailAddress")).sendKeys("abcd@gmail.com");
+          driver.findElement(By.id("emailAddress")).sendKeys("abcu@gmail.com");
 
           driver.findElement(By.id("password")).sendKeys("P@33w0rd");
 
@@ -109,7 +109,7 @@ public class StepDefs
     @When("User enters username and password")
     public void user_enters_username_and_password() 
     {
-        driver.findElement(By.id("signin_userName")).sendKeys("abc@gmail.com");
+        driver.findElement(By.id("signin_userName")).sendKeys("abc6@gmail.com");
     
         driver.findElement(By.id("signin_password")).sendKeys("P@33w0rd");
     }
