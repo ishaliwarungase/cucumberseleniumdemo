@@ -38,13 +38,13 @@
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
-            <version>6.9.1</version>
+            <version>4.8.0</version>
         </dependency>
            
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>6.9.1</version>
+            <version>4.8.0</version>
         </dependency>
             
 <!--         <dependency>
@@ -55,7 +55,7 @@
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java8</artifactId>
-            <version>6.9.1</version>
+            <version>4.8.0</version>
         </dependency>
 <!--         <dependency>
             <groupId>io.cucumber</groupId>
