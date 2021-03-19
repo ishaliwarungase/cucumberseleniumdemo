@@ -10,9 +10,9 @@ import org.junit.runner.RunWith;
 //         tags = {"@Register","@Login"},
         plugin = {
                 "pretty",
-                "html:results/html",
+//                 "html:results/html",
                 "json:results/json/result.json",
-                "junit:results/junit/cucumber.xml"
+//                 "junit:results/junit/cucumber.xml"
         },
         monochrome = true
 )
